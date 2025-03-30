@@ -7,17 +7,11 @@
 
 import SwiftUI
 
-struct PreviewView: View {
-    var body: some View {
-        Rectangle()
-    }
-}
-
 struct PreviewBadgeView: View {
     var body: some View {
         ZStack {
-            PreviewView()
-                .foregroundStyle(.green)
+            Rectangle()
+                .fill(.red)
             
             Text("Preview")
                 .font(.headline.weight(.heavy))
@@ -27,19 +21,19 @@ struct PreviewBadgeView: View {
 }
 
 struct BadgeView: View {
-    
+        
     @State var size: CGFloat = 100
+    
     var body: some View {
         VStack {
-            ZStack(alignment: .topTrailing) {
+            ZStack(alignment: .top){
                 Rectangle()
                     .fill(.teal)
                     .frame(width: .infinity, height: 200)
                 
-                    PreviewBadgeView()
+                PreviewBadgeView()
                     .frame(width: .infinity, height: size)
-            }.clipped()
-            
+            }
             Slider(value: $size, in: 0...200)
             Spacer()
         }
