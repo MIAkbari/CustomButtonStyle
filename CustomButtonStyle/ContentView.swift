@@ -95,15 +95,16 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             Button("Sign in with Apple") {}
-                .socialStyle(.init(iconName: "g.circle.fill", color: .black))
+                .socialStyle(.init(iconName: "a.circle.fill", color: .black))
                 .buttonStyle(.social)
-                .frame(maxWidth:  400)
             
             Button("Sign in with Google") {}
-                .buttonStyle(.borderedProminent)
+                .socialStyle(.init(iconName: "g.circle.fill", color: .red))
+                .buttonStyle(.social)
 
             Button("Sign in with Facebook") {}
-                .buttonStyle(.borderedProminent)
+                .socialStyle(.init(iconName: "f.circle.fill", color: .blue))
+                .buttonStyle(.social)
         }
         .foregroundStyle(.white)
         .padding()
