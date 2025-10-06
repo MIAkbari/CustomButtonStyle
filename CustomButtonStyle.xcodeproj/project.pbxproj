@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1161949A2D9C284800946034 /* CustomCircleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116194992D9C284800946034 /* CustomCircleButtons.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1123F7FC2D988722007EF35F /* CustomButtonStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomButtonStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		116194992D9C284800946034 /* CustomCircleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCircleButtons.swift; path = CustomButtonStyle/CustomCircleButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		1123F7F32D988722007EF35F = {
 			isa = PBXGroup;
 			children = (
+				116194992D9C284800946034 /* CustomCircleButtons.swift */,
 				1123F7FE2D988722007EF35F /* CustomButtonStyle */,
 				1123F7FD2D988722007EF35F /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1161949A2D9C284800946034 /* CustomCircleButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

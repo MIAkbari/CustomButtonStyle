@@ -11,7 +11,7 @@ struct PreviewBadgeView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.red)
+                .fill(.yellow)
             
             Text("Preview")
                 .font(.headline.weight(.heavy))
@@ -21,20 +21,20 @@ struct PreviewBadgeView: View {
 }
 
 struct BadgeView: View {
-        
     @State var size: CGFloat = 100
-    
     var body: some View {
         VStack {
-            ZStack(alignment: .top){
-                Rectangle()
-                    .fill(.teal)
-                    .frame(width: .infinity, height: 200)
-                
+            ZStack(alignment: .topLeading) {
+                Image(.preview)
+                    .resizable()
+                    .clipped()
+                    .frame(width: .infinity, height: 250)
                 PreviewBadgeView()
-                    .frame(width: .infinity, height: size)
+                    .frame(width: 100, height: size)
             }
-            Slider(value: $size, in: 0...200)
+            
+            Slider(value: $size.animation(), in: 0...200)
+            
             Spacer()
         }
     }
