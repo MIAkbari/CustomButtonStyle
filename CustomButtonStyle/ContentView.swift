@@ -95,8 +95,8 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             Button("Sign in with Apple") {}
-                .socialStyle(.init(iconName: "a.circle.fill", color: .black))
-                .buttonStyle(.social)
+                .socialStyle(.init(iconName: "apple.logo", color: .black))
+                .buttonStyle(SocialButtonPressStyle())
             
             Button("Sign in with Google") {}
                 .socialStyle(.init(iconName: "g.circle.fill", color: .red))
@@ -111,9 +111,9 @@ struct ContentView: View {
     }
 }
 //
-//#Preview {
-//    ContentView()
-//}
+#Preview("First") {
+    ContentView()
+}
 
 import SwiftUI
 
