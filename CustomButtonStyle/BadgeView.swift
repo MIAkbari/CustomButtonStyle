@@ -24,13 +24,15 @@ struct BadgeView: View {
     @State var size: CGFloat = 100
     var body: some View {
         VStack {
-            ZStack(alignment: .topLeading) {
-                Image(.preview)
-                    .resizable()
-                    .clipped()
-                    .frame(width: .infinity, height: 250)
-                PreviewBadgeView()
-                    .frame(width: 100, height: size)
+            ZStack {
+                ZStack(alignment: .topTrailing) {
+                    Image(.preview)
+                        .resizable()
+                        .clipped()
+                        .frame(width: .infinity, height: 250)
+                    PreviewBadgeView()
+                        .frame(width: 100, height: size)
+                }
             }
             
             Slider(value: $size.animation(), in: 0...200)
