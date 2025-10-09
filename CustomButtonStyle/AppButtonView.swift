@@ -41,8 +41,34 @@ private struct SocialButtonEnvironmentKeyApp: EnvironmentKey {
 
 extension EnvironmentValues {
     var socailButtonConfigApp: SocialButtonConigApp {
-        get { [SocialButtonConigApp].self }
-        set { [SocialButtonConigApp].self = newValue }
+        get { self[SocialButtonEnvironmentKeyApp.self] }
+        set { self[SocialButtonEnvironmentKeyApp.self] = newValue }
+    }
+}
+
+
+struct SocialButtonViewModifierApp: ViewModifier {
+    
+    let isPressed: Bool
+    @Environment(\.socailButtonConfigApp) var style 
+    
+    func body(content: Content) -> some View {
+        HStack {
+            Image(systemName: style.icon)
+                .padding(.leading, ButtonConstantsApp.padding)
+                .padding(.horizontal, 5)
+            
+            content
+                .font(.headline.weight(.medium))
+                .padding([.vertical, .trailing], ButtonConstantsApp.padding)
+        }
+        .background(style.color)
+        .cornerRadius(ButtonConstantsApp.corenrRadius)
+        .shadow(color: .black.opacity(0.2), radius: ButtonConstantsApp.shadowRadius, x: 0, y: ButtonConstantsApp.corenrRadius)
+        .scaleEffect(isPressed ? ButtonConstantsApp.pressedScale : 0 )
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isPressed)
+        .fixedSize(horizontal: false, vertical: true)
+        .dynamicTypeSize(.xSmall ... .xxLarge)
     }
 }
 
