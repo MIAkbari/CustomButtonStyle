@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ButtonStyleConstant {
-    static let padding: CGFloat = 15
+    static let padding: CGFloat = 15 
 }
 
 struct SocialButtonSetting {

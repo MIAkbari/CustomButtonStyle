@@ -8,8 +8,42 @@
 import SwiftUI
 
 
-struct KeyOFChangeBase: EnvironmentKey {
-    static var defaultValue: Int = 10
+public enum ButtonConstantsApp {
+    static let padding: CGFloat = 16
+    static let corenrRadius: CGFloat = 10
+    static let minWidth: CGFloat = 200
+    static let shadowRadius: CGFloat = 4
+    static let pressedScale: CGFloat = 0.96
+}
+
+struct SocialButtonConigApp {
+    var icon: String
+    var color: Color
+    var gradiantLayer: LinearGradient?
+    
+    // Apple Example
+    static let apple = Self (
+        icon: "apple.logo",
+        color: .black,
+        gradiantLayer: nil
+    )
+    
+    static let google = Self (
+        icon: "g.circle.logo",
+        color: .red,
+        gradiantLayer: nil
+    )
+}
+
+private struct SocialButtonEnvironmentKeyApp: EnvironmentKey {
+    static var defaultValue: SocialButtonConigApp = .apple
+}
+
+extension EnvironmentValues {
+    var socailButtonConfigApp: SocialButtonConigApp {
+        get { [SocialButtonConigApp].self }
+        set { [SocialButtonConigApp].self = newValue }
+    }
 }
 
 
