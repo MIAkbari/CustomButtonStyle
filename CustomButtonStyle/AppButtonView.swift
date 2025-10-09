@@ -12,9 +12,10 @@ public enum ButtonConstantsApp {
     static let padding: CGFloat = 16
     static let corenrRadius: CGFloat = 10
     static let minWidth: CGFloat = 200
-    static let shadowRadius: CGFloat = 4
+    static let shadowRadius: CGFloat = 5
     static let pressedScale: CGFloat = 0.96
 }
+
 
 struct SocialButtonConigApp {
     var icon: String
@@ -29,9 +30,14 @@ struct SocialButtonConigApp {
     )
     
     static let google = Self (
-        icon: "g.circle.logo",
+        icon: "g.circle.fill",
         color: .red,
         gradiantLayer: nil
+    )
+    
+    static let faceBook = Self(
+        icon: "f.circle.fill",
+        color: .blue
     )
 }
 
@@ -45,7 +51,6 @@ extension EnvironmentValues {
         set { self[SocialButtonEnvironmentKeyApp.self] = newValue }
     }
 }
-
 
 struct SocialButtonViewModifierApp: ViewModifier {
     
@@ -63,27 +68,49 @@ struct SocialButtonViewModifierApp: ViewModifier {
                 .padding([.vertical, .trailing], ButtonConstantsApp.padding)
         }
         .background(style.color)
+        .foregroundStyle(.white)
         .cornerRadius(ButtonConstantsApp.corenrRadius)
-        .shadow(color: .black.opacity(0.2), radius: ButtonConstantsApp.shadowRadius, x: 0, y: ButtonConstantsApp.corenrRadius)
-        .scaleEffect(isPressed ? ButtonConstantsApp.pressedScale : 0 )
+        .shadow(color: .black.opacity(0.2), radius: ButtonConstantsApp.shadowRadius, x: 0, y: ButtonConstantsApp.shadowRadius)
+        .scaleEffect(isPressed ? ButtonConstantsApp.pressedScale : 1 )
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isPressed)
         .fixedSize(horizontal: false, vertical: true)
-        .dynamicTypeSize(.xSmall ... .xxLarge)
+        .dynamicTypeSize(.small ... .xxLarge)
     }
 }
 
+struct SocialButtonStyleApp: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label.modifier(SocialButtonViewModifierApp(isPressed: configuration.isPressed))
+    }
+}
+
+extension ButtonStyle where Self == SocialButtonStyleApp {
+    static var styleApp: SocialButtonStyleApp { .init() }
+}
+
+extension View {
+    func socialStyleApp(_ style: SocialButtonConigApp) -> some View {
+        environment(\.socailButtonConfigApp, style)
+    }
+}
+
+extension Button {
+    
+    func setSocialButtonStyle(_ style: SocialButtonConigApp) -> some View {
+        socialStyleApp(style)
+            .buttonStyle(.styleApp)
+    }
+}
 
 struct AppButtonView: View {
     var body: some View {
         ZStack {
             VStack {
                 Button("Sign With Apple") {}
-                    .frame(maxWidth: 600)
-                    .background(.blue)
-//                    .socialStyle(.init(iconName: "apple.logo", color: .black))
-//                    .buttonStyle(.social)
-                    .foregroundStyle(.white)
-                    .padding()
+                    .setSocialButtonStyle(.apple)
+
             }
         }
     }

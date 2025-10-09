@@ -58,6 +58,7 @@ struct SocialButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .modifier(SocialButtonViewModifier(isPressed: configuration.isPressed))
+        
     }
 }
 
@@ -71,25 +72,6 @@ extension View {
     }
 }
 
-struct ButtonView: View {
-    var body: some View {
-        VStack(spacing: 10) {
-            Button("Sign in with Apple") {}
-                .socialStyle(.init(iconName: "apple.logo", color: .black))
-                .buttonStyle(.social)
-            
-            Button("Sign in with Google") {}
-                .socialStyle(.init(iconName: "g.circle.fill", color: .red))
-                .buttonStyle(.social)
-            
-            Button("Sign in with Facebook") {}
-                .socialStyle(.init(iconName: "f.circle.fill", color: .blue))
-                .buttonStyle(.social)
-        }
-        .foregroundStyle(.white)
-        .padding()
-    }
-}
 
 struct ContentView: View {
     var body: some View {
