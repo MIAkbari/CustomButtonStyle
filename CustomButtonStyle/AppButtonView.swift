@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+
+struct KeyOFChangeBase: EnvironmentKey {
+    static var defaultValue: Int = 10
+}
+
+
 struct AppButtonView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                Button("Sign With Apple") {}
+                    .frame(maxWidth: 600)
+                    .background(.blue)
+//                    .socialStyle(.init(iconName: "apple.logo", color: .black))
+//                    .buttonStyle(.social)
+                    .foregroundStyle(.white)
+                    .padding()
+            }
+        }
     }
 }
 
